@@ -1,6 +1,6 @@
 CONFIG = {
     'mode': 'wsgi',
-    'working_dir': '/home/box/web/etc',
+    'working_dir': '/home/box/web',
     'python': '/usr/bin/python3',
     'args': (
         '--bind=0.0.0.0:8080',
@@ -9,11 +9,3 @@ CONFIG = {
         'hello:app',
     ),
 }
-
-def app(environ, start_response):
-        body = [(i + '\n') for i in environ['QUERY_STRING'].split('&')]
-        start_response("200 OK", [
-            ("Content-Type", "text/plain"),
-            ("Content-Length", str(len(body)))
-        ])
-        return body
